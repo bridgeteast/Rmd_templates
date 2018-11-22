@@ -33,6 +33,9 @@ basicCN <- ggplot(ucdavis1,aes(x=Sex,y=dadheight))
 ```{r}
 basicCN + geom_boxplot()
 ```
+```{r}
+basicCN + geom_boxplot() + stat_boxplot(geom ='errorbar') 
+```
 
   
 
