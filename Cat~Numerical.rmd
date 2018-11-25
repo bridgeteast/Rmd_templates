@@ -1,0 +1,94 @@
+---
+title: "Cat~Numerical template"
+author: "Dr K"
+date: "November 25, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# t.test
+
+This is a template to serve as an example (cut and paste, change variable names)  
+we use the ucdavis1 dataset from the tigerstats package.
+
+```{r}
+require(tidyverse)
+require(tigerstats)
+data(ucdavis1)
+davisdata <- na.omit(ucdavis1)
+```
+
+
+###Plot boxplots
+
+```{r}
+plot(momheight~Sex,data=davisdata)
+```
+
+##Now with ggplot - first select the basic data
+
+```{r}
+basicCN <- ggplot(ucdavis1,aes(x=Sex,y=dadheight))
+```
+##Now add in boxplot
+
+```{r}
+basicCN + geom_boxplot()
+```
+  
+  
+###get fancy  
+
+```{r}
+basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
+```
+
+# Numerical results
+
+```{r}
+favstats(momheight~Sex,data=ucdavis1)
+```
+
+# Inferential  
+  
+```{r}
+t.test(momheight~Sex,data=ucdavis1)
+```
+# One Way Anova
+  
+  
+
+###Plot boxplots
+
+```{r}
+plot(alcohol~Seat,data=davisdata)
+```
+   
+####Using ggplot
+
+```{r}
+basicCN <- ggplot(davisdata,aes(x=Seat,y=alcohol))
+
+basicCN + geom_boxplot()
+```
+# Numerical results
+
+```{r}
+favstats(alcohol~Seat,data=ucdavis1)
+```
+# Inferential
+
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+
+##When significant follow up with TukeyHSD  
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
