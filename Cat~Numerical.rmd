@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 This is a template to serve as an example (cut and paste, change variable names)  
 we use the ucdavis1 dataset from the tigerstats package.
 
-```{r}
+```{r include=FALSE}
 require(tidyverse)
 require(tigerstats)
 data(ucdavis1)
@@ -74,6 +74,7 @@ basicCN <- ggplot(davisdata,aes(x=Seat,y=alcohol))
 
 basicCN + geom_boxplot()
 ```
+  
 # Numerical results
 
 ```{r}
