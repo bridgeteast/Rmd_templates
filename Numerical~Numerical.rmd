@@ -86,9 +86,8 @@ anova(model.1,model.2)
 
 ###Test show model.2 better than model.1 (p is low (.0027) so reject $H_0$ )
   
-###Code below can be run as a chunk to ge interactivity -- so far can't get knitted version to work  
+###Code below can be run as a chunk to get interactivity -- so far can't get knitted version to work  
   
 ```{r}
-plot3d(davisdata$Height,davisdata$dadheight,davisdata$momheight,type="s",size=1,lt=TRUE)
+plot3d(davisdata$Height,davisdata$dadheight,davisdata$momheight)
 ```
-
